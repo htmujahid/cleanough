@@ -11,10 +11,10 @@ export const auth = betterAuth({
   }),
   socialProviders: {
     github: {
-      clientId: process.env.GITHUB_CLIENT_ID as string,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+      clientId: import.meta.env.GITHUB_CLIENT_ID as string,
+      clientSecret: import.meta.env.GITHUB_CLIENT_SECRET as string,
     },
   },
-  trustedOrigins: [process.env.VITE_APP_URL as string || 'http://localhost:3000'],
+  trustedOrigins: [import.meta.env.VITE_APP_URL as string],
   plugins: [tanstackStartCookies()], // make sure this is the last plugin in the array
 })
