@@ -11,8 +11,8 @@ export const auth = betterAuth({
   }),
   socialProviders: {
     github: {
-      clientId: import.meta.env.GITHUB_CLIENT_ID as string,
-      clientSecret: import.meta.env.GITHUB_CLIENT_SECRET as string,
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     },
   },
   plugins: [tanstackStartCookies()], // make sure this is the last plugin in the array
