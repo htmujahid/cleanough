@@ -4,8 +4,8 @@ An open source, git-powered code presentation platform that transforms GitHub re
 
 <h1 align="center">
    <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="public/images/bg-dark.png">
-   <img alt="supasheet" width="100%" src="public/images/bg-light.png">
+   <source media="(prefers-color-scheme: dark)" srcset="public/bg-dark.png">
+   <img alt="supasheet" width="100%" src="public/bg-light.png">
    </picture>
 </h1>
 
@@ -29,84 +29,90 @@ An open source, git-powered code presentation platform that transforms GitHub re
 - Display terminal outputs and rendered images
 - Metadata-driven output organization via `__cleanough/meta.json`
 
-## Tech Stack
-
-- **Frontend**: React 19, TanStack Router, TanStack Query, Vite
-- **UI**: Chakra UI 3, Monaco Editor
-- **Backend**: TanStack Start, Better Auth, Drizzle ORM
-- **Database**: PostgreSQL
-- **Integration**: GitHub API (Octokit)
-
 ## Getting Started
 
-### Prerequisites
-
-- Node.js 18+
-- pnpm
-- PostgreSQL database
-- GitHub OAuth App credentials
-
-### Installation
-
-```bash
-pnpm install
-```
-
-### Environment Variables
-
-Create a `.env` file with the following variables:
-
-```env
-DATABASE_URL=your_postgres_connection_string
-GITHUB_CLIENT_ID=your_github_oauth_client_id
-GITHUB_CLIENT_SECRET=your_github_oauth_client_secret
-BETTER_AUTH_SECRET=your_auth_secret
-```
-
-### Development
-
-```bash
-pnpm start
-```
-
-### Production Build
-
-```bash
-pnpm build
-```
-
-## Project Structure
+To view any GitHub repository as a presentation, simply visit:
 
 ```
-src/
-├── components/
-│   ├── dashboard/      # Repository browser components
-│   ├── editor/         # VS Code-like editor components
-│   └── landing/        # Landing page components
-├── db/                 # Database schema and configuration
-├── hooks/              # Custom React hooks
-├── integrations/       # Third-party integrations (Chakra UI, TanStack Query)
-├── lib/                # Utilities (auth, GitHub API, file helpers)
-├── routes/             # TanStack Router file-based routes
-└── types/              # TypeScript type definitions
+https://cleanough.netlify.app/repos/[owner]/[repo]
 ```
+
+Replace `[owner]` with the GitHub username or organization, and `[repo]` with the repository name.
+
+**Example:** `https://cleanough.netlify.app/repos/facebook/react`
 
 ## Repository Metadata
 
-Repositories can include an optional `__cleanough/meta.json` file to customize the presentation experience:
+Repositories can include an optional `__cleanough/meta.json` file to customize the presentation experience.
+
+### Configuration
+
+Create a `__cleanough/meta.json` file in your repository root:
 
 ```json
 {
-  "order": ["README.md", "src/index.ts"],
+  "order": [
+    {
+      "type": "file",
+      "path": "contact.php"
+    },
+    {
+      "type": "file",
+      "path": "style.css"
+    },
+    {
+      "type": "image",
+      "path": "__cleanough/outputs/browser-1.png"
+    },
+    {
+      "type": "image",
+      "path": "__cleanough/outputs/browser-2.png"
+    },
+    {
+      "type": "terminal",
+      "path": "__cleanough/outputs/terminal-1.txt"
+    },
+    {
+      "type": "image",
+      "path": "__cleanough/outputs/browser-3.png"
+    }
+  ],
   "outputs": [
     {
-      "commit": "abc123",
+      "type": "image",
+      "path": "__cleanough/outputs/browser-1.png"
+    },
+    {
+      "type": "image",
+      "path": "__cleanough/outputs/browser-2.png"
+    },
+    {
       "type": "terminal",
-      "content": "Build successful!"
+      "path": "__cleanough/outputs/terminal-1.txt"
+    },
+    {
+      "type": "image",
+      "path": "__cleanough/outputs/browser-3.png"
     }
   ]
 }
 ```
+
+### Fields
+
+- **order**: Defines the sequence of items to display in the presentation. Each item has:
+  - `type`: Either `"file"`, `"image"`, or `"terminal"`
+  - `path`: Path to the file relative to repository root
+
+- **outputs**: Specifies output assets (screenshots, terminal logs) to display alongside code. Store these in `__cleanough/outputs/` directory.
+
+### Supported Output Types
+
+| Type | Description |
+|------|-------------|
+| `file` | Source code files to display |
+| `image` | Screenshots or diagrams (PNG, JPG, GIF, etc.) |
+| `terminal` | Terminal/console output text files |
 
 ## Use Cases
 
@@ -115,17 +121,6 @@ Repositories can include an optional `__cleanough/meta.json` file to customize t
 - **Education**: Teach programming concepts with commit-by-commit progression
 - **Conferences**: Interactive code samples for talks and presentations
 - **Code Reviews**: Visualize code evolution and refactoring
-
-## Scripts
-
-```bash
-pnpm start     # Start development server
-pnpm build     # Build for production
-pnpm test      # Run tests
-pnpm lint      # Run ESLint
-pnpm format    # Format code with Prettier
-pnpm check     # Type check
-```
 
 ## License
 
