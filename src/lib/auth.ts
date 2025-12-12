@@ -15,6 +15,5 @@ export const auth = betterAuth({
       clientSecret: import.meta.env.GITHUB_CLIENT_SECRET as string,
     },
   },
-  trustedOrigins: [import.meta.env.VITE_APP_URL as string],
   plugins: [tanstackStartCookies()], // make sure this is the last plugin in the array
 })
