@@ -2,6 +2,13 @@
 
 An open source, git-powered code presentation platform that transforms GitHub repositories into interactive, presentation-ready experiences. Browse, explore, and present code commits in a VS Code-like interface.
 
+<h1 align="center">
+   <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="public/images/bg-dark.png">
+   <img alt="supasheet" width="100%" src="public/images/bg-light.png">
+   </picture>
+</h1>
+
 ## Features
 
 ### Explorer Mode

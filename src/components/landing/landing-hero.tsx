@@ -5,11 +5,13 @@ import {
   HStack,
   Heading,
   Icon,
+  Image,
   Text,
   VStack,
 } from '@chakra-ui/react'
 import { Link } from '@tanstack/react-router'
 import { LuExternalLink, LuGitBranch, LuGithub } from 'react-icons/lu'
+import { useColorModeValue } from '@/integrations/chakra-ui/color-mode'
 
 interface LandingHeroProps {
   user: {
@@ -21,6 +23,8 @@ interface LandingHeroProps {
 }
 
 export function LandingHero({ user }: LandingHeroProps) {
+  const coverImage = useColorModeValue('/bg-light.png', '/bg-dark.png')
+
   return (
     <Box pt="32" pb="20">
       <Container maxW="4xl" textAlign="center">
@@ -91,6 +95,17 @@ export function LandingHero({ user }: LandingHeroProps) {
               </a>
             </Button>
           </HStack>
+
+          <Image
+            src={coverImage}
+            alt="Cleanough app preview"
+            w="full"
+            maxW="4xl"
+            rounded="xl"
+            borderWidth="1px"
+            borderColor="border.muted"
+            mt="8"
+          />
         </VStack>
       </Container>
     </Box>
