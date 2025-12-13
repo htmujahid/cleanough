@@ -93,11 +93,11 @@ export function EditorLayout() {
         <Splitter.Root
           flex="1"
           h="full"
-          defaultSize={[20, 80]}
+          defaultSize={[22, 78]}
           panels={[
             {
               id: 'sidebar',
-              minSize: 20,
+              minSize: 22,
               maxSize: 40,
               collapsible: true,
               collapsedSize: 0,

@@ -39,7 +39,7 @@ export function EditorDiffFileDiff({ path, ref }: EditorDiffFileDiffProps) {
       }),
   })
 
-  const previousCommitSha = fileCommits?.previousCommit.sha
+  const previousCommitSha = fileCommits?.previousCommit?.sha
 
   // Fetch current version
   const {
