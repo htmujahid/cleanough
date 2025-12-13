@@ -205,7 +205,7 @@ export function EditorStatusbar({
           <Text fontSize="2xs" minW="36" textAlign="center">
             {navigation.isOnCommitInfo
               ? `Commit ${navigation.currentCommitIndex}/${navigation.totalCommits}`
-              : `File ${navigation.currentFileIndex}/${navigation.totalFiles} • Commit ${navigation.currentCommitIndex}/${navigation.totalCommits}`}
+              : `Step ${navigation.currentFileIndex}/${navigation.totalFiles} • Commit ${navigation.currentCommitIndex}/${navigation.totalCommits}`}
           </Text>
           <IconButton
             aria-label="Next item"
